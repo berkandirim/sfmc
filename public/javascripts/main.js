@@ -54,8 +54,8 @@ saveButton.onclick = () => {
   formData = {
     title: title.value,
     description: description.value,
-    countries: countries,
-    imageUrl: image.value
+    country: countries,
+    image: image.value
   };
   output.append(JSON.stringify(formData));
 };

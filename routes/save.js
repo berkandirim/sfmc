@@ -8,8 +8,8 @@ mongoose.connect('mongodb://localhost:27017/sfmc', {useMongoClient: true});
 const formSchema = new mongoose.Schema({
   title: String,
   description: String,
-  countries: Array,
-  imageUrl: String
+  country: Array,
+  image: String
 });
 
 const Form = mongoose.model('Form', formSchema);
