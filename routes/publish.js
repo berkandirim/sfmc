@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const logData = require('../helpers/logdata');
 
-router.get('/', function(req, res, next) {
-  res.send('this is the publish page');
+router.post('/', (req, res, next) => {
+  logData.logData( req );
+  res.status(200).send('Publish');
 });
 
 module.exports = router;
