@@ -48,6 +48,7 @@
   const title = document.getElementById('title');
   const description = document.getElementById('description');
   const image = document.getElementById('image');
+  const action = document.getElementById('action');
   const output = document.getElementById('output');
   const step1 = document.getElementById('step1');
   const step2 = document.getElementById('step2');
@@ -129,16 +130,14 @@
     }
   };
 
-  const updateFields = (data) => {
+  const updateForm = (data) => {
     let fieldData = data.arguments.execute.inArguments;
-
-    fieldData.forEach(field => {
-      let fieldName = Object.keys(field)[0];
-      let fieldValue = field[fieldName];
-
-      form[fieldName] = fieldValue;
-      fields.filter('#' + fieldName).value(fieldValue);
-    });
+    
+    title.value = fieldData.title;
+    description.value = fieldData.description;
+    image.value = fieldData.image;
+    action.value = fieldData.action;
+    select.value = fieldData.country;
 
   };
 
@@ -165,13 +164,14 @@
     if (title.value === '') required.push('Title');
     if (description.value === '') required.push('Description');
     if (image.value === '') required.push('Image');
+    if (action.value === '') required.push('Action');
     if (countries.length === 0) required.push('Country');
 
     if (required.length > 0) {
       alert('Please fill the following field(s): ' + required);
       return false;
-    } else if (!URLregex.test(image.value)) {
-      alert('Image URL must be a valid URL');
+    } else if (!URLregex.test(image.value) || !URLregex.test(action.value)) {
+      alert('URLs must be a valid');
       return false;
     } else return true
   };
@@ -200,7 +200,8 @@
       title: title.value,
       description: description.value,
       country: countries,
-      image: image.value
+      image: image.value,
+      action: action.value
     };
 
     const valid = validateForm();
@@ -218,8 +219,15 @@
         console.error(e)
       })
     }
+    connection.trigger('updateActivity', formData);
   };
   
   // Define connection to window obj for external use
   window.connection = connection;
+  
+  window.onload = () => {
+    connection.on('initActivity', data => {
+      updateForm(data);
+    })
+  };
 })();

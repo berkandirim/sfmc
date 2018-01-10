@@ -9,7 +9,8 @@ const formSchema = new mongoose.Schema({
   title: String,
   description: String,
   country: Array,
-  image: String
+  image: String,
+  action: String
 });
 
 const Form = mongoose.model('Form', formSchema);

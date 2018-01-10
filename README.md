@@ -6,8 +6,9 @@ This is a custom activity for creating web push notifications.
 
 ## To run this project locally
 
-Make sure you have mongoDB installed
-Instructions for installing 
+Make sure you have mongoDB installed.
+
+Instructions for installing: 
 [Mac](https://treehouse.github.io/installation-guides/mac/mongo-mac.html)
 [Windows](https://treehouse.github.io/installation-guides/windows/mongo-windows.html)
 [Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
