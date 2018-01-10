@@ -1,3 +1,6 @@
+let formData = {};
+let countries = [];
+
 // cache DOM
 const form = document.getElementById('notificationForm');
 const saveButton = document.getElementById('save');
@@ -14,6 +17,9 @@ const btnStep1 = document.getElementById('btnStep1');
 const btnStep2 = document.getElementById('btnStep2');
 const notification = document.getElementById('notification');
 const closeNot = document.getElementById('closeNot');
+const notTitle = document.getElementById('notTitle');
+const notBody = document.getElementById('notBody');
+const notIcon = document.getElementById('notIcon');
 
 // methods
 const getCountryList = () => {
@@ -32,7 +38,7 @@ const getCountryList = () => {
 };
 
 const postFormData = async (formData) => {
-  fetch('/save', {
+  fetch('/post', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -44,7 +50,7 @@ const postFormData = async (formData) => {
       console.log('Saved to DB successfully');
     }
   });
-}
+};
 
 const getSelectedCountries = (select) => {
   let result = [];
@@ -64,22 +70,22 @@ const getSelectedCountries = (select) => {
 
 const hasClass = (el, className) => {
   if (el.classList)
-    return el.classList.contains(className)
+    return el.classList.contains(className);
   else
     return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
-}
+};
 
 const addClass = (el, className) => {
   if (el.classList)
-    el.classList.add(className)
+    el.classList.add(className);
   else if (!hasClass(el, className)) el.className += ' ' + className
 };
 
 const removeClass = (el, className) => {
   if (el.classList)
-    el.classList.remove(className)
+    el.classList.remove(className);
   else if (hasClass(el, className)) {
-    const reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
+    const reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
     el.className = el.className.replace(reg, ' ')
   }
 };
@@ -87,6 +93,9 @@ const removeClass = (el, className) => {
 getCountryList();
 
 previewButton.onclick = () => {
+  notTitle.innerHTML = title.value;
+  notBody.innerHTML = description.value;
+  notIcon.src = image.value;
   addClass(notification, 'in-view');
 };
 
@@ -100,10 +109,10 @@ clearButton.onclick = () => {
 };
 
 saveButton.onclick = () => {
-  let countries = getSelectedCountries(select);
-  let formData = {
+  countries = getSelectedCountries(select);
+  formData = {
     title: title.value,
-    description: description.value,
+    description: title.value,
     country: countries,
     image: image.value
   };
@@ -120,5 +129,3 @@ saveButton.onclick = () => {
     console.error(e)
   })
 };
-
-// TODO: create a public method for revealing step 2

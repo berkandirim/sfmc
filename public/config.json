@@ -14,11 +14,13 @@
   },
   "arguments": {
     "execute": {
-      "inArguments": [{
-        "myInArgument": "inArgument coming from iframe"
-      }],
+      "inArguments": [
+        {
+          "myInArgument": "inArgument coming from iframe"
+        }
+      ],
       "outArguments": [],
-      "url": "https://some-endpoint.com/execute"
+      "url": "https://sfmc-push-notifications.herokuapp.com/execute"
     }
   },
   "configurationArguments": {
@@ -27,7 +29,7 @@
       "url": "URI/for/your/activity/save"
     },
     "publish": {
-      "url": "URI/for/your/activity/publish"
+      "url": "https://sfmc-push-notifications.herokuapp.com/publish"
     },
     "validate": {
       "url": "URI/for/your/activity/validate"
@@ -36,10 +38,11 @@
       "url": "URI/for/your/activity/stop"
     }
   },
-  "wizardSteps": [{
-    "label": "Step 1",
-    "key": "step1"
-  },
+  "wizardSteps": [
+    {
+      "label": "Step 1",
+      "key": "step1"
+    },
     {
       "label": "Step 2",
       "key": "step2"
@@ -64,13 +67,15 @@
   "schema": {
     "arguments": {
       "execute": {
-        "inArguments": [{
-          "myInArgument": {
-            "dataType": "<some data type>",
-            "isNullable": false,
-            "direction": "in"
+        "inArguments": [
+          {
+            "myInArgument": {
+              "dataType": "<some data type>",
+              "isNullable": false,
+              "direction": "in"
+            }
           }
-        }],
+        ],
         "outArguments": []
       }
     }

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 const execute = require('./routes/execute');
 const publish = require('./routes/publish');
-const save = require('./routes/save');
+const post = require('./routes/post');
 
 const app = express();
 
@@ -15,6 +15,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/execute', execute);
 app.use('/publish', publish);
-app.use('/save', save);
+app.use('/post', post);
 
 module.exports = app;

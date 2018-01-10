@@ -7,6 +7,11 @@
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .container {
   max-width: 720px;
   margin: 50px auto;
@@ -38,8 +43,8 @@ select[multiple] {
   width: 300px;
   height: 90px;
   z-index: 99999;
+  background-color: #fff;
   transition: right ease-in-out 300ms;
-  /* TODO: make offscreen not scrollable */
 }
 
 .notification.in-view {
@@ -48,8 +53,8 @@ select[multiple] {
 
 .notification-actions {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 6px;
+  right: 6px;
 }
 
 .notification-icon {
@@ -57,10 +62,11 @@ select[multiple] {
 }
 
 .notification-title {
-  font-size: 1em;
+  font-size: 0.9em;
   margin: 0;
 }
 
 .notification-body {
-  font-size: 0.75em;
+  font-size: 0.7em;
+  line-height: 1;
 }

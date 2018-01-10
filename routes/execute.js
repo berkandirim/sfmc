@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const logData = require('../helpers/logdata');
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   logData.logData( req );
   res.status(200).send('Execute');
 });

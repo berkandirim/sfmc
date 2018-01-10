@@ -17,11 +17,12 @@ const Form = mongoose.model('Form', formSchema);
 router.post('/', (req, res) => {
   const myData = new Form(req.body);
   myData.save()
-    .then(item => {
-      res.send('item saved to database');
+    .then(() => {
+      res.send('Item saved to database');
     })
-    .catch(err => {
-      res.status(400).send('unable to save to database');
+    .catch((e) => {
+      console.log(e);
+      res.status(400).send('Unable to save to database');
     });
 });
 
