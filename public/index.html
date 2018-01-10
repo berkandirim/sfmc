@@ -39,25 +39,25 @@
     <div class="row">
       <div class="col">
         <label for="title">Title</label>
-        <input maxlength="20" type="text" id="title" name="title">
+        <input maxlength="20" type="text" id="title" name="title" class="form-item">
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label for="description">Description</label>
-        <textarea maxlength="160" id="description" name="description" rows="4"></textarea>
+        <textarea maxlength="160" id="description" name="description" rows="4" class="form-item"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label for="country">Country</label>
-        <select name="country" id="country" multiple></select>
+        <select name="country" id="country" multiple class="form-item"></select>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label for="image">Image URL</label>
-        <input type="text" id="image" name="image">
+        <input type="text" id="image" name="image" class="form-item">
       </div>
     </div>
     <div class="row">
@@ -74,7 +74,7 @@
   <label for="output">Here's your form data:</label>
   <textarea name="output" id="output" class="output" cols="30" rows="10" readonly></textarea>
 </div>
-<script src="./javascripts/main.js"></script>
 <script src="./javascripts/postmonger.min.js"></script>
+<script src="./javascripts/main.js"></script>
 </body>
 </html>

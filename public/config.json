@@ -1,30 +1,25 @@
 {
   "workflowApiVersion": "1.1",
   "metaData": {
-    "icon": "images/sms.png",
-    "iconSmall": "images/smsSmall.png",
+    "icon": "images/adidas_logo.svg",
+    "iconSmall": "images/adidas_logo.svg",
     "category": "message"
   },
-  "type": "myActivityType",
+  "type": "REST",
   "lang": {
     "en-US": {
-      "name": "Custom Activity (Workflow API v1.1)",
-      "description": "A custom Journey Builder activity using workflow API v1.1 format."
+      "name": "Web push notification builder",
+      "description": "A custom Journey Builder activity for web push notifications"
     }
   },
   "arguments": {
     "execute": {
-      "inArguments": [
-        {
-          "myInArgument": "inArgument coming from iframe"
-        }
-      ],
+      "inArguments": [],
       "outArguments": [],
       "url": "https://sfmc-push-notifications.herokuapp.com/execute"
     }
   },
   "configurationArguments": {
-    "applicationExtensionKey": "<signing secret from installed package>",
     "save": {
       "url": "URI/for/your/activity/save"
     },
@@ -46,15 +41,6 @@
     {
       "label": "Step 2",
       "key": "step2"
-    },
-    {
-      "label": "Step 3",
-      "key": "step3"
-    },
-    {
-      "label": "Step 4",
-      "key": "step4",
-      "active": false
     }
   ],
   "userInterfaces": {
@@ -67,15 +53,7 @@
   "schema": {
     "arguments": {
       "execute": {
-        "inArguments": [
-          {
-            "myInArgument": {
-              "dataType": "<some data type>",
-              "isNullable": false,
-              "direction": "in"
-            }
-          }
-        ],
+        "inArguments": [],
         "outArguments": []
       }
     }
