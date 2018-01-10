@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>adidas Web Push Notifications</title>
+  <title>Web Push Notifications</title>
   <link rel="stylesheet" href="https://unpkg.com/chota@latest">
   <link rel='stylesheet' href='./stylesheets/style.css' />
   <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
@@ -14,8 +14,8 @@
       <img src="./images/adidas_logo.svg" alt="">
     </a>
     <div class="tabs">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
+      <a href="#" id="btnStep1" class="active">Step 1</a>
+      <a href="#" id="btnStep2">Step 2</a>
     </div>
   </div>
   <div class="nav-right">
@@ -25,7 +25,7 @@
 <div id="step1" class="container">
   <h1>Create your web push notification</h1>
   <p>Please use the form below to create your push notification</p>
-  <form id="notificationForm" name="notificationForm" action="/save" method="post">
+  <form id="notificationForm" name="notificationForm">
     <div class="row">
       <div class="col">
         <label for="title">Title</label>
@@ -53,16 +53,16 @@
     <div class="row">
       <div class="col buttons is-right">
         <button type="button" id="clear" class="button secondary">Clear Form</button>
-        <button type="submit" id="save" class="button primary">Save</button>
+        <button type="button" id="save" class="button primary">Save</button>
       </div>
     </div>
   </form>
 
 </div>
-<div id="step2" class="container">
-  <label for="output"></label>
-  <textarea name="output" id="output" cols="30" rows="10">
-  </textarea>
+<div id="step2" class="container is-hidden">
+  <h2 class="success-message">Saved to database successfully!</h2>
+  <label for="output">Here's your form data:</label>
+  <textarea name="output" id="output" class="output" cols="30" rows="10" readonly></textarea>
 </div>
 <script src="./javascripts/main.js"></script>
 </body>

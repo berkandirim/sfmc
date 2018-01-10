@@ -20,3 +20,11 @@
 select[multiple] {
   background-image: none;
 }
+
+.success-message {
+  color: var(--primary-color);
+}
+
+.output {
+  font-family: monospace;
+}
