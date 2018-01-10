@@ -70,7 +70,7 @@ const hasClass = (el, className) => {
 const addClass = (el, className) => {
   if (el.classList)
     el.classList.add(className)
-  else if (!hasClass(el, className)) el.className += " " + className
+  else if (!hasClass(el, className)) el.className += ' ' + className
 };
 
 const removeClass = (el, className) => {
