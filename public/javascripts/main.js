@@ -12,6 +12,8 @@ const step1 = document.getElementById('step1');
 const step2 = document.getElementById('step2');
 const btnStep1 = document.getElementById('btnStep1');
 const btnStep2 = document.getElementById('btnStep2');
+const notification = document.getElementById('notification');
+const closeNot = document.getElementById('closeNot');
 
 // methods
 const getCountryList = () => {
@@ -78,14 +80,19 @@ const removeClass = (el, className) => {
     el.classList.remove(className)
   else if (hasClass(el, className)) {
     const reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
-    el.className=el.className.replace(reg, ' ')
+    el.className = el.className.replace(reg, ' ')
   }
 };
 
 getCountryList();
 
 previewButton.onclick = () => {
+  addClass(notification, 'in-view');
+};
 
+closeNot.onclick = (e) => {
+  e.preventDefault();
+  removeClass(notification, 'in-view');
 };
 
 clearButton.onclick = () => {

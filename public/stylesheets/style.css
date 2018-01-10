@@ -28,3 +28,39 @@ select[multiple] {
 .output {
   font-family: monospace;
 }
+
+.notification {
+  position: absolute;
+  display: flex;
+  padding: 10px;
+  top: 70px;
+  right: -300px;
+  width: 300px;
+  height: 90px;
+  z-index: 99999;
+  transition: right ease-in-out 300ms;
+  /* TODO: make offscreen not scrollable */
+}
+
+.notification.in-view {
+  right: 20px;
+}
+
+.notification-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.notification-icon {
+  margin-right: 12px;
+}
+
+.notification-title {
+  font-size: 1em;
+  margin: 0;
+}
+
+.notification-body {
+  font-size: 0.75em;
+}
