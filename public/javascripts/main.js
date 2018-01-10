@@ -1,6 +1,43 @@
 let formData = {};
 let countries = [];
 
+const URLregex = new RegExp(
+  "^" +
+  // protocol identifier
+  "(?:(?:https?|ftp)://)" +
+  // user:pass authentication
+  "(?:\\S+(?::\\S*)?@)?" +
+  "(?:" +
+  // IP address exclusion
+  // private & local networks
+  "(?!(?:10|127)(?:\\.\\d{1,3}){3})" +
+  "(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})" +
+  "(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +
+  // IP address dotted notation octets
+  // excludes loopback network 0.0.0.0
+  // excludes reserved space >= 224.0.0.0
+  // excludes network & broacast addresses
+  // (first & last IP address of each class)
+  "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])" +
+  "(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}" +
+  "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))" +
+  "|" +
+  // host name
+  "(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)" +
+  // domain name
+  "(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*" +
+  // TLD identifier
+  "(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))" +
+  // TLD may end with dot
+  "\\.?" +
+  ")" +
+  // port number
+  "(?::\\d{2,5})?" +
+  // resource path
+  "(?:[/?#]\\S*)?" +
+  "$", "i"
+);
+
 // cache DOM
 const form = document.getElementById('notificationForm');
 const saveButton = document.getElementById('save');
@@ -90,6 +127,22 @@ const removeClass = (el, className) => {
   }
 };
 
+const validateForm = () => {
+  let required = [];
+  if (title.value === '') required.push('Title');
+  if (description.value === '') required.push('Description');
+  if (image.value === '') required.push('Image');
+  if (countries.length === 0) required.push('Country');
+  
+  if (required.length > 0) {
+    alert('Please fill the following field(s): ' + required);
+    return false;
+  } else if (!URLregex.test(image.value)) {
+    alert('Image URL must be a valid URL');
+    return false;
+  } else return true
+};
+
 getCountryList();
 
 previewButton.onclick = () => {
@@ -112,20 +165,24 @@ saveButton.onclick = () => {
   countries = getSelectedCountries(select);
   formData = {
     title: title.value,
-    description: title.value,
+    description: description.value,
     country: countries,
     image: image.value
   };
+  
+  const valid = validateForm();
+  
+  if (valid) {
+    postFormData(formData).then(() => {
+      output.append(JSON.stringify(formData));
 
-  postFormData(formData).then(() => {
-    output.append(JSON.stringify(formData));
+      removeClass(step2, 'is-hidden');
+      addClass(step1, 'is-hidden');
 
-    removeClass(step2, 'is-hidden');
-    addClass(step1, 'is-hidden');
-
-    removeClass(btnStep1, 'active');
-    addClass(btnStep2, 'active');
-  }).catch((e) => {
-    console.error(e)
-  })
+      removeClass(btnStep1, 'active');
+      addClass(btnStep2, 'active');
+    }).catch((e) => {
+      console.error(e)
+    })
+  }
 };
