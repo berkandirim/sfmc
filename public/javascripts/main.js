@@ -127,6 +127,14 @@ const removeClass = (el, className) => {
   }
 };
 
+const nextStep = () => {
+  removeClass(step2, 'is-hidden');
+  addClass(step1, 'is-hidden');
+
+  removeClass(btnStep1, 'active');
+  addClass(btnStep2, 'active');
+};
+
 const validateForm = () => {
   let required = [];
   if (title.value === '') required.push('Title');
